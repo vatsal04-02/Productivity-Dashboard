@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Productivity Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         APP BACKGROUND
+    ====================================================== -->
+
+    <div class="app-background"></div>
+
+
+    <!-- =====================================================
+         MAIN APP
+    ====================================================== -->
+
+    <main class="app">
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section id="dashboard" class="dashboard active-view">
+
+
+            <!-- ================= HEADER ================= -->
+
+            <header class="dashboard-header">
+
+                <div class="brand">
+                    <div class="brand-icon">
+                        ✦
+                    </div>
+
+                    <div>
+                        <h1>Productivity</h1>
+                        <p>Your personal workspace</p>
+                    </div>
+                </div>
+
+
+                <div class="header-actions">
+
+                    <!-- DATE & TIME -->
+
+                    <div class="datetime-card">
+
+                        <div class="date-info">
+                            <span id="day">Wednesday</span>
+                            <strong id="date">02 September 2026</strong>
+                        </div>
+
+                        <div class="time-info">
+                            <span id="time">07:12 PM</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- THEME SWITCH -->
+
+                    <button
+                        id="themeToggle"
+                        class="theme-toggle"
+                        type="button"
+                        aria-label="Toggle theme">
+
+                        <span class="theme-icon">☾</span>
+
+                        <span class="toggle-track">
+                            <span class="toggle-thumb"></span>
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ================= WELCOME ================= -->
+
+            <section class="welcome-section">
+
+                <div>
+                    <p class="eyebrow">YOUR WORKSPACE</p>
+
+                    <h2>
+                        Make today
+                        <span>productive.</span>
+                    </h2>
+
+                    <p class="welcome-text">
+                        Focus on what matters and make progress
+                        one task at a time.
+                    </p>
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= QUICK STATS ================= -->
+
+            <section class="quick-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon todo-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>Tasks</span>
+                        <strong id="taskCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon goal-icon">
+                        ◉
+                    </div>
+
+                    <div>
+                        <span>Goals</span>
+                        <strong id="goalCount">0 / 0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon focus-icon">
+                        ◷
+                    </div>
+
+                    <div>
+                        <span>Focus</span>
+                        <strong>25 min</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= MAIN GRID ================= -->
+
+            <section class="dashboard-grid">
+
+
+                <!-- TODO CARD -->
+
+                <article
+                    class="feature-card todo-card"
+                    data-feature="todo">
+
+                    <div class="card-top">
+
+                        <div class="feature-icon purple">
+                            ✓
+                        </div>
+
+                        <button class="card-arrow" type="button">
+                            →
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-label">
+                            PRODUCTIVITY
+                        </span>
+
+                        <h3>Todo List</h3>
+
+                        <p>
+                            Organize your tasks and keep track
+                            of what needs to get done.
+                        </p>
+
+                    </div>
+
+                    <div class="card-preview">
+
+                        <div class="mini-task">
+                            <span class="mini-checkbox"></span>
+                            <span>Complete today's work</span>
+                        </div>
+
+                        <div class="mini-task">
+                            <span class="mini-checkbox checked">✓</span>
+                            <span>Morning workout</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PLANNER CARD -->
+
+                <article
+                    class="feature-card planner-card"
+                    data-feature="planner">
+
+                    <div class="card-top">
+
+                        <div class="feature-icon blue">
+                            ▦
+                        </div>
+
+                        <button class="card-arrow" type="button">
+                            →
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-label">
+                            ORGANIZE
+                        </span>
+
+                        <h3>Daily Planner</h3>
+
+                        <p>
+                            Plan your day with time-based
+                            tasks and notes.
+                        </p>
+
+                    </div>
+
+                    <div class="planner-preview">
+
+                        <div class="preview-time">
+                            09:00
+                        </div>
+
+                        <div class="preview-line">
+                            Deep work
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- POMODORO CARD -->
+
+                <article
+                    class="feature-card pomodoro-card"
+                    data-feature="pomodoro">
+
+                    <div class="card-top">
+
+                        <div class="feature-icon orange">
+                            ◷
+                        </div>
+
+                        <button class="card-arrow" type="button">
+                            →
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-label">
+                            FOCUS
+                        </span>
+
+                        <h3>Pomodoro</h3>
+
+                        <p>
+                            Work in focused sessions and take
+                            intentional breaks.
+                        </p>
+
+                    </div>
+
+                    <div class="timer-preview">
+                        <strong>25:00</strong>
+                        <span>WORK SESSION</span>
+                    </div>
+
+                </article>
+
+
+
+                <!-- GOALS CARD -->
+
+                <article
+                    class="feature-card goals-card"
+                    data-feature="goals">
+
+                    <div class="card-top">
+
+                        <div class="feature-icon green">
+                            ◎
+                        </div>
+
+                        <button class="card-arrow" type="button">
+                            →
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-label">
+                            PROGRESS
+                        </span>
+
+                        <h3>Daily Goals</h3>
+
+                        <p>
+                            Set meaningful goals and track
+                            your daily progress.
+                        </p>
+
+                    </div>
+
+                    <div class="progress-preview">
+
+                        <div class="progress-header">
+                            <span>Today's progress</span>
+                            <strong id="goalProgress">0%</strong>
+                        </div>
+
+                        <div class="progress-bar">
+                            <span id="goalProgressBar"></span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- MOTIVATION CARD -->
+
+                <article
+                    class="feature-card quote-card"
+                    data-feature="quote">
+
+                    <div class="card-top">
+
+                        <div class="feature-icon yellow">
+                            “
+                        </div>
+
+                        <button class="card-arrow" type="button">
+                            →
+                        </button>
+
+                    </div>
+
+                    <div class="quote-preview">
+
+                        <p>
+                            “The secret of getting ahead
+                            is getting started.”
+                        </p>
+
+                        <span>
+                            — Mark Twain
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- WEATHER CARD -->
+
+                <article class="weather-dashboard-card">
+
+                    <div class="weather-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                WEATHER
+                            </span>
+
+                            <h3 id="weatherLocation">
+                                Your Location
+                            </h3>
+
+                        </div>
+
+                        <div
+                            id="weatherIcon"
+                            class="weather-icon">
+                            ☀
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-temperature">
+
+                        <strong id="temperature">
+                            --°
+                        </strong>
+
+                        <span id="weatherCondition">
+                            Loading...
+                        </span>
+
+                    </div>
+
+
+                    <div class="weather-details">
+
+                        <div>
+                            <span>Humidity</span>
+                            <strong id="humidity">--%</strong>
+                        </div>
+
+                        <div>
+                            <span>Wind</span>
+                            <strong id="wind">-- km/h</strong>
+                        </div>
+
+                        <div>
+                            <span>Rain</span>
+                            <strong id="precipitation">-- mm</strong>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FEATURE VIEW CONTAINER
+        ================================================== -->
+
+        <section
+            id="featureView"
+            class="feature-view">
+
+
+            <!-- =================================================
+                 TODO FEATURE
+            ================================================== -->
+
+            <section
+                id="todoFeature"
+                class="feature-screen">
+
+                <div class="feature-screen-header">
+
+                    <button
+                        class="back-btn"
+                        data-back
+                        type="button">
+
+                        ←
+                        <span>Dashboard</span>
+
+                    </button>
+
+                    <div class="feature-title">
+
+                        <div class="feature-icon purple">
+                            ✓
+                        </div>
+
+                        <div>
+                            <span class="card-label">
+                                PRODUCTIVITY
+                            </span>
+
+                            <h2>Todo List</h2>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-body todo-layout">
+
+                    <div class="todo-main">
+
+                        <div class="section-heading">
+
+                            <div>
+                                <span class="card-label">
+                                    TASKS
+                                </span>
+
+                                <h3>What needs to be done?</h3>
+                            </div>
+
+                            <span
+                                id="todoTotal"
+                                class="item-count">
+                                0 tasks
+                            </span>
+
+                        </div>
+
+
+                        <!-- ADD TASK -->
+
+                        <div class="input-row">
+
+                            <input
+                                id="taskInput"
+                                type="text"
+                                placeholder="Add a new task..."
+                                autocomplete="off">
+
+                            <button
+                                id="addTask"
+                                class="primary-btn"
+                                type="button">
+
+                                + Add Task
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- TASK LIST -->
+
+                        <div
+                            id="taskList"
+                            class="task-list">
+
+                            <!-- JS inserts tasks here -->
+
+                            <div class="empty-state">
+                                <div class="empty-icon">
+                                    ✓
+                                </div>
+
+                                <h4>No tasks yet</h4>
+
+                                <p>
+                                    Add your first task to get started.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TODO SIDE PANEL -->
+
+                    <aside class="feature-side-panel">
+
+                        <div class="side-panel-header">
+                            <span class="card-label">
+                                TODAY
+                            </span>
+
+                            <h3>Task Overview</h3>
+                        </div>
+
+
+                        <div class="overview-stat">
+                            <span>Total tasks</span>
+                            <strong id="overviewTotal">0</strong>
+                        </div>
+
+                        <div class="overview-stat">
+                            <span>Completed</span>
+                            <strong id="overviewCompleted">0</strong>
+                        </div>
+
+                        <div class="overview-stat">
+                            <span>Important</span>
+                            <strong id="overviewImportant">0</strong>
+                        </div>
+
+                    </aside>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DAILY PLANNER
+            ================================================== -->
+
+            <section
+                id="plannerFeature"
+                class="feature-screen">
+
+                <div class="feature-screen-header">
+
+                    <button
+                        class="back-btn"
+                        data-back
+                        type="button">
+
+                        ←
+                        <span>Dashboard</span>
+
+                    </button>
+
+                    <div class="feature-title">
+
+                        <div class="feature-icon blue">
+                            ▦
+                        </div>
+
+                        <div>
+                            <span class="card-label">
+                                ORGANIZE
+                            </span>
+
+                            <h2>Daily Planner</h2>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-body planner-layout">
+
+                    <div class="planner-main">
+
+                        <div class="section-heading">
+
+                            <div>
+                                <span class="card-label">
+                                    TODAY
+                                </span>
+
+                                <h3>Plan your day</h3>
+                            </div>
+
+                            <span class="planner-date">
+                                <span id="plannerDate">
+                                    Today
+                                </span>
+                            </span>
+
+                        </div>
+
+
+                        <div class="schedule-list">
+
+
+                            <!-- 06 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    06:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="06:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 07 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    07:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="07:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 08 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    08:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="08:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 09 -->
+
+                            <div class="time-slot current">
+
+                                <span class="slot-time">
+                                    09:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="09:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 10 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    10:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="10:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 11 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    11:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="11:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 12 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    12:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="12:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 13 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    13:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="13:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 14 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    14:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="14:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 15 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    15:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="15:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 16 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    16:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="16:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <!-- 17 -->
+
+                            <div class="time-slot">
+
+                                <span class="slot-time">
+                                    17:00
+                                </span>
+
+                                <div class="slot-line"></div>
+
+                                <input
+                                    class="plan-input"
+                                    data-time="17:00"
+                                    type="text"
+                                    placeholder="Add a plan...">
+
+                                <button
+                                    class="clear-plan"
+                                    type="button">
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 MOTIVATION
+            ================================================== -->
+
+            <section
+                id="quoteFeature"
+                class="feature-screen">
+
+                <div class="feature-screen-header">
+
+                    <button
+                        class="back-btn"
+                        data-back
+                        type="button">
+
+                        ←
+                        <span>Dashboard</span>
+
+                    </button>
+
+                    <div class="feature-title">
+
+                        <div class="feature-icon yellow">
+                            “
+                        </div>
+
+                        <div>
+                            <span class="card-label">
+                                MOTIVATION
+                            </span>
+
+                            <h2>Daily Motivation</h2>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quote-screen-content">
+
+                    <div class="quote-large-card">
+
+                        <span class="quote-mark">
+                            “
+                        </span>
+
+                        <p
+                            id="quoteText"
+                            class="quote-large-text">
+
+                            The secret of getting ahead
+                            is getting started.
+
+                        </p>
+
+                        <span
+                            id="quoteAuthor"
+                            class="quote-author">
+
+                            — Mark Twain
+
+                        </span>
+
+
+                        <!-- LOADING -->
+
+                        <div
+                            id="quoteLoading"
+                            class="loading-state hidden">
+
+                            <span class="loader"></span>
+                            <span>Finding inspiration...</span>
+
+                        </div>
+
+
+                        <!-- ERROR -->
+
+                        <div
+                            id="quoteError"
+                            class="error-state hidden">
+
+                            Unable to load a new quote.
+                            Try again.
+
+                        </div>
+
+
+                        <button
+                            id="newQuote"
+                            class="primary-btn quote-btn"
+                            type="button">
+
+                            ↻ New Quote
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 POMODORO
+            ================================================== -->
+
+            <section
+                id="pomodoroFeature"
+                class="feature-screen">
+
+                <div class="feature-screen-header">
+
+                    <button
+                        class="back-btn"
+                        data-back
+                        type="button">
+
+                        ←
+                        <span>Dashboard</span>
+
+                    </button>
+
+                    <div class="feature-title">
+
+                        <div class="feature-icon orange">
+                            ◷
+                        </div>
+
+                        <div>
+                            <span class="card-label">
+                                FOCUS
+                            </span>
+
+                            <h2>Pomodoro Timer</h2>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="pomodoro-content">
+
+                    <div class="pomodoro-card">
+
+                        <span
+                            id="sessionLabel"
+                            class="session-label">
+
+                            WORK SESSION
+
+                        </span>
+
+
+                        <div
+                            id="timerDisplay"
+                            class="timer-display">
+
+                            25:00
+
+                        </div>
+
+
+                        <div class="timer-progress">
+
+                            <span id="timerProgress"></span>
+
+                        </div>
+
+
+                        <div class="timer-controls">
+
+                            <button
+                                id="startTimer"
+                                class="primary-btn timer-start"
+                                type="button">
+
+                                ▶ Start
+
+                            </button>
+
+                            <button
+                                id="pauseTimer"
+                                class="secondary-btn"
+                                type="button">
+
+                                ❚❚ Pause
+
+                            </button>
+
+                            <button
+                                id="resetTimer"
+                                class="secondary-btn"
+                                type="button">
+
+                                ↻ Reset
+
+                            </button>
+
+                        </div>
+
+
+                        <p class="timer-hint">
+                            Stay focused. You've got this.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 WEATHER
+            ================================================== -->
+
+            <section
+                id="weatherFeature"
+                class="feature-screen">
+
+                <div class="feature-screen-header">
+
+                    <button
+                        class="back-btn"
+                        data-back
+                        type="button">
+
+                        ←
+                        <span>Dashboard</span>
+
+                    </button>
+
+                    <div class="feature-title">
+
+                        <div class="feature-icon blue">
+                            ☁
+                        </div>
+
+                        <div>
+                            <span class="card-label">
+                                CURRENT CONDITIONS
+                            </span>
+
+                            <h2>Weather</h2>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="weather-screen-content">
+
+                    <div class="weather-main-card">
+
+                        <div class="weather-main-top">
+
+                            <div>
+
+                                <span class="card-label">
+                                    LOCATION
+                                </span>
+
+                                <h3 id="weatherFullLocation">
+                                    Your Location
+                                </h3>
+
+                            </div>
+
+                            <div
+                                id="weatherFullIcon"
+                                class="weather-full-icon">
+
+                                ☀
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="temperature-section">
+
+                            <strong id="weatherFullTemperature">
+                                --°
+                            </strong>
+
+                            <span id="weatherFullCondition">
+                                Loading weather...
+                            </span>
+
+                        </div>
+
+
+                        <div class="weather-metrics">
+
+                            <div class="weather-metric">
+
+                                <span class="metric-icon">
+                                    💧
+                                </span>
+
+                                <div>
+                                    <span>Humidity</span>
+                                    <strong id="weatherFullHumidity">
+                                        --%
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="weather-metric">
+
+                                <span class="metric-icon">
+                                    💨
+                                </span>
+
+                                <div>
+                                    <span>Wind</span>
+                                    <strong id="weatherFullWind">
+                                        -- km/h
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="weather-metric">
+
+                                <span class="metric-icon">
+                                    ☔
+                                </span>
+
+                                <div>
+                                    <span>Precipitation</span>
+                                    <strong id="weatherFullPrecipitation">
+                                        -- mm
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="weatherLoading"
+                            class="loading-state hidden">
+
+                            <span class="loader"></span>
+                            <span>Getting weather...</span>
+
+                        </div>
+
+
+                        <div
+                            id="weatherError"
+                            class="error-state hidden">
+
+                            Unable to load weather information.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DAILY GOALS
+            ================================================== -->
+
+            <section
+                id="goalsFeature"
+                class="feature-screen">
+
+                <div class="feature-screen-header">
+
+                    <button
+                        class="back-btn"
+                        data-back
+                        type="button">
+
+                        ←
+                        <span>Dashboard</span>
+
+                    </button>
+
+                    <div class="feature-title">
+
+                        <div class="feature-icon green">
+                            ◎
+                        </div>
+
+                        <div>
+                            <span class="card-label">
+                                PROGRESS
+                            </span>
+
+                            <h2>Daily Goals</h2>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-body goals-layout">
+
+                    <div class="goals-main">
+
+                        <div class="section-heading">
+
+                            <div>
+
+                                <span class="card-label">
+                                    TODAY'S GOALS
+                                </span>
+
+                                <h3>
+                                    What do you want to accomplish?
+                                </h3>
+
+                            </div>
+
+                            <strong
+                                id="goalsProgressText"
+                                class="goals-progress-text">
+
+                                0 of 0 completed
+
+                            </strong>
+
+                        </div>
+
+
+                        <!-- ADD GOAL -->
+
+                        <div class="input-row">
+
+                            <input
+                                id="goalInput"
+                                type="text"
+                                placeholder="Add a new goal..."
+                                autocomplete="off">
+
+                            <button
+                                id="addGoal"
+                                class="primary-btn"
+                                type="button">
+
+                                + Add Goal
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- PROGRESS -->
+
+                        <div class="goal-progress-card">
+
+                            <div class="progress-header">
+
+                                <div>
+
+                                    <span>
+                                        Daily progress
+                                    </span>
+
+                                    <strong
+                                        id="goalsPercentage">
+                                        0%
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="progress-bar large">
+                                <span id="goalsBar"></span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- GOAL LIST -->
+
+                        <div
+                            id="goalList"
+                            class="goal-list">
+
+                            <div class="empty-state">
+
+                                <div class="empty-icon">
+                                    ◎
+                                </div>
+
+                                <h4>No goals yet</h4>
+
+                                <p>
+                                    Add a goal and start making progress.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+
+    
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
