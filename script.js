@@ -34,6 +34,17 @@ function todoOperations(){
 
  todoDashboard();
 
+  const updateOverview =()=>{
+   
+    const total = taskArr.length;
+    const completed = taskArr.filter(task => task.completed).length;
+    const important = taskArr.filter(task => task.important).length;
+
+    document.querySelector("#overviewTotal").textContent = total;
+    document.querySelector("#overviewCompleted").textContent = completed;
+    document.querySelector("#overviewImportant").textContent = important;
+ }
+
  const ui = () => {
 
     taskList.innerHTML = "";
@@ -124,11 +135,13 @@ function todoOperations(){
         
 
     }
-
     
     buttons();
+    updateOverview();
 
  };
+
+
 
  addBtn.addEventListener("click",(event)=>{
 
