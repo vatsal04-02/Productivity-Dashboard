@@ -2788,3 +2788,23 @@ input {
 .delete-btn:hover {
     background: #ffd5d5;
 }
+
+.complete-btn {
+    background: #9b0af6;
+    color: #f2f4f1;
+    border-radius: 3px;
+}
+
+.complete-btn:hover {
+    background: #dcbded;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.complete-btn.completed-btn {
+    background-color: green;
+    color: white;
+}
