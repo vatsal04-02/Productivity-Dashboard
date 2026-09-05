@@ -24,13 +24,8 @@ const humidity = document.querySelector("#humidity");
 const wind = document.querySelector("#wind");
 const precipitation = document.querySelector("#precipitation");
 
-
-
-console.log("TEMP ELEMENT:", weatherFullTemperature);
-console.log("HUMIDITY ELEMENT:", weatherFullHumidity);
-console.log("WIND ELEMENT:", weatherFullWind);
-console.log("RAIN ELEMENT:", weatherFullPrecipitation);
-
+const weatherFeature = document.querySelector("#weatherFeature");
+const weatherCard = document.querySelector(".weather-dashboard-card");
 
 
 
@@ -290,89 +285,85 @@ function showPlannerDate() {
 
 
 //Weather operations
-const getLocation = () =>{
-     navigator.geolocation.getCurrentPosition((position)=>{
-         const latitude = position.coords.latitude;
-         const longitude = position.coords.longitude;
-
-         console.log(latitude, longitude);
-
-         getWeather(latitude, longitude);
-
-         getLocationName(latitude, longitude);
-     },
-
-     (error) =>{
-        console.log("location error:", error);
-     }
-
-  );
-};
-
-const getLocationName = async (latitude, longitude) => {
-
-    const url =
-        `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
-
-    const response = await fetch(url);
-
-    const data = await response.json();
-
-    console.log("LOCATION DATA:", data);
-
-    const address = data.address;
-
-    const city =
-        address.city ||
-        address.town ||
-        address.village ||
-        address.municipality;
-
-    const state = address.state;
-
-    weatherLocation.textContent = `${city}, ${state}`;
-};
-
-
-const getWeather = async (latitude, longitude) => {
-
-    const url =
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,weather_code&timezone=auto`;
-
-    const response = await fetch(url);
-
-    const data = await response.json();
-
-    console.log("WEATHER DATA:", data);
-
-   
-    const current = data.current;
-
-    console.log("CURRENT:", current);
-    console.log("TEMP:", current.temperature_2m);
-    console.log("HUMIDITY:", current.relative_humidity_2m);
-    console.log("WIND:", current.wind_speed_10m);
-    console.log("RAIN:", current.precipitation);
-
-    console.log(data);
-
+function weatherOperations() {
+    const getLocation = () =>{
+         navigator.geolocation.getCurrentPosition((position)=>{
+             const latitude = position.coords.latitude;
+             const longitude = position.coords.longitude;
     
-
-    temperature.textContent =
-    `${Math.round(current.temperature_2m)}°`;
-
-    humidity.textContent =
-    `${current.relative_humidity_2m}%`;
-
-    wind.textContent =
-    `${current.wind_speed_10m} km/h`;
-
-    precipitation.textContent =
-    `${current.precipitation} mm`;
-
+    
+             getWeather(latitude, longitude);
+    
+             getLocationName(latitude, longitude);
+         },
+    
+         (error) =>{
+            console.log("location error:", error);
+         }
+    
+      );
+    };
+    
+    const getLocationName = async (latitude, longitude) => {
+    
+        const url =
+            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+    
+        const response = await fetch(url);
+    
+        const data = await response.json();
+    
+    
+        const address = data.address;
+    
+        const city =
+            address.city ||
+            address.town ||
+            address.village ||
+            address.municipality;
+    
+        const state = address.state;
+    
+        weatherLocation.textContent = `${city}, ${state}`;
+    };
+    
+    
+    const getWeather = async (latitude, longitude) => {
+    
+        const url =
+            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,weather_code&timezone=auto`;
+    
+        const response = await fetch(url);
+    
+        const data = await response.json();
+    
+       
+    
+       
+        const current = data.current;
+    
+        temperature.textContent =
+        `${Math.round(current.temperature_2m)}°`;
+    
+        humidity.textContent =
+        `${current.relative_humidity_2m}%`;
+    
+        wind.textContent =
+        `${current.wind_speed_10m} km/h`;
+    
+        precipitation.textContent =
+        `${current.precipitation} mm`;
+    
+    };
+    
+    getLocation();
+    
+    weatherCard.addEventListener("click",()=>{
+        return dashboard;
+    })
 };
 
-getLocation();
+weatherOperations();
 
 
 
