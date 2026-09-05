@@ -10,6 +10,15 @@ const taskInput = document.querySelector("#taskInput");
 const addBtn = document.querySelector("#addTask");
 const taskList = document.querySelector("#taskList");
 
+const plannerFeature = document.querySelector("#plannerFeature");
+const plannerCard = document.querySelector('[data-feature="planner"]');
+const backBtnPlanner = document.querySelector("#plannerFeature .back-btn");
+
+const scheduleList = document.querySelector("#scheduleList");
+
+
+
+
 const taskArr =[];
 
 //todo operations
@@ -36,13 +45,14 @@ function todoOperations(){
 
   const updateOverview =()=>{
    
-    const total = taskArr.length;
+    const total = taskArr.length + " tasks";
     const completed = taskArr.filter(task => task.completed).length;
     const important = taskArr.filter(task => task.important).length;
 
     document.querySelector("#overviewTotal").textContent = total;
     document.querySelector("#overviewCompleted").textContent = completed;
     document.querySelector("#overviewImportant").textContent = important;
+    document.querySelector("#todoTotal").textContent = total;
  }
 
  const ui = () => {
@@ -62,6 +72,10 @@ function todoOperations(){
 
                     <button class="edit-btn">
                         <i class="ri-pencil-ai-line"></i>
+                    </button>
+
+                    <button class="schedule-btn">
+                      <i class="ri-time-line"></i>
                     </button>
 
                     <button class="delete-btn">
@@ -108,6 +122,7 @@ function todoOperations(){
                     taskArr[index].text = newTask.trim();
 
                     ui();
+                    
                 }
 
             });
@@ -127,10 +142,36 @@ function todoOperations(){
          
  
              ui();
+             
 
             });
 
         });
+
+
+        const scheduleBtns = document.querySelectorAll(".schedule-btn");
+
+        scheduleBtns.forEach((btn) => {
+
+            btn.addEventListener("click", () => {
+
+             const index =
+             btn.parentElement.parentElement.dataset.index;
+
+             const time = prompt("Enter time (e.g. 14:30):");
+
+               if (time !== null && time.trim() !== "") {
+
+                 taskArr[index].time = time;
+
+                  console.log(taskArr);
+
+                  renderPlanner();
+                }
+
+            });
+
+        }); 
 
         
 
@@ -138,6 +179,7 @@ function todoOperations(){
     
     buttons();
     updateOverview();
+    renderPlanner();
 
  };
 
@@ -153,7 +195,9 @@ function todoOperations(){
 
             taskArr.push({
                 text: task,
-                completed: false
+                completed: false,
+                important: false,
+                time: null
             });
 
             taskInput.value = "";
@@ -169,6 +213,65 @@ function todoOperations(){
 }
 
 todoOperations();
+
+//Daily planner operations
+
+function dailyPlannerOperations(){
+
+    plannerCard.addEventListener("click",()=>{
+        dashboard.classList.add("hidden");
+        featureView.classList.add("open");
+        plannerFeature.classList.add("active");
+
+        renderPlanner();
+        showPlannerDate();
+    })
+
+    backBtnPlanner.addEventListener("click",()=>{
+        dashboard.classList.remove("hidden");
+        featureView.classList.remove("open");
+        plannerFeature.classList.remove("active");
+    })
+
+}
+
+dailyPlannerOperations();
+
+function renderPlanner(){
+        scheduleList.innerHTML = "";
+
+        taskArr
+        .filter(task => task.time !== null)
+        .sort((a,b) => a.time.localeCompare(b.time))
+        .forEach((task,index)=>{
+            scheduleList.innerHTML += `
+             <div class="time-slot ${task.completed ? "completed" : ""}">
+                    <span class="slot-time">${task.time}</span>
+
+                    <div class="slot-line"></div>
+
+                    <span class="plan-task">${task.text}</span>
+              </div>
+            `;
+        });
+
+
+}
+
+function showPlannerDate() {
+
+    const today = new Date();
+
+    const options = {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    };
+
+    document.querySelector("#plannerDate").textContent =
+        today.toLocaleDateString("en-IN", options);
+}
 
 
 
