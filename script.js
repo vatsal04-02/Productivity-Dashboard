@@ -27,7 +27,22 @@ const precipitation = document.querySelector("#precipitation");
 const weatherFeature = document.querySelector("#weatherFeature");
 const weatherCard = document.querySelector(".weather-dashboard-card");
 
+const quoteText = document.querySelector("#quoteText");
+const quoteAuthor = document.querySelector("#quoteAuthor");
 
+const dashboardQuoteText =
+    document.querySelector("#dashboardQuoteText");
+
+const dashboardQuoteAuthor =
+    document.querySelector("#dashboardQuoteAuthor");
+
+const newQuote = document.querySelector("#newQuote");
+
+const quoteLoading =
+    document.querySelector("#quoteLoading");
+
+const quoteError =
+    document.querySelector("#quoteError");
 
 const taskArr =[];
 
@@ -365,6 +380,68 @@ function weatherOperations() {
 
 weatherOperations();
 
+//Motivation page
+
+const motivationFeature = document.querySelector("#quoteFeature");
+const motivationCard = document.querySelector('[data-feature="quote"]')
+const motivationBckBtn = document.querySelector( "#quoteFeature .back-btn")
+
+motivationCard.addEventListener("click",()=>{
+    dashboard.classList.add("hidden");
+    featureView.classList.add("open");
+    motivationFeature.classList.add("active");
+});
+
+motivationBckBtn.addEventListener("click",()=>{
+    dashboard.classList.remove("hidden");
+    featureView.classList.remove("open");
+    motivationFeature.classList.remove("active");
+});
+
+const getQuote = async () => {
+
+    try {
+
+        quoteLoading.classList.remove("hidden");
+        quoteError.classList.add("hidden");
+
+        const response =
+            await fetch("https://dummyjson.com/quotes/random");
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch quote");
+        }
+
+        const data = await response.json();
 
 
+        // Full quote screen
+        quoteText.textContent = data.quote;
+        quoteAuthor.textContent = `— ${data.author}`;
 
+        // Dashboard preview
+        dashboardQuoteText.textContent =
+            `“${data.quote}”`;
+
+        dashboardQuoteAuthor.textContent =
+            `— ${data.author}`;
+
+    } catch (error) {
+
+        console.log("Quote error:", error);
+
+        quoteError.classList.remove("hidden");
+
+    } finally {
+
+        quoteLoading.classList.add("hidden");
+
+    }
+};
+
+
+newQuote.addEventListener("click", () => {
+    getQuote();
+});
+
+getQuote();
