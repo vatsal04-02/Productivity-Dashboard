@@ -42,7 +42,22 @@ const quoteLoading =
     document.querySelector("#quoteLoading");
 
 const quoteError =
-    document.querySelector("#quoteError");
+ document.querySelector("#quoteError");
+
+const pomodoroCard = document.querySelector('[data-feature="pomodoro"]');
+const pomodoroFeature = document.querySelector("#pomodoroFeature");
+
+const pomodoroBckBtn = document.querySelector("#pomodoroFeature .back-btn");
+
+
+const timerDisplay = document.querySelector("#timerDisplay");
+const startTimer = document.querySelector("#startTimer");
+const pauseTimer = document.querySelector("#pauseTimer");
+const resetTimer = document.querySelector("#resetTimer");
+
+const sessionLabel = document.querySelector("#sessionLabel");
+const timerProgress = document.querySelector("#timerProgress");
+
 
 const taskArr =[];
 
@@ -382,66 +397,149 @@ weatherOperations();
 
 //Motivation page
 
-const motivationFeature = document.querySelector("#quoteFeature");
-const motivationCard = document.querySelector('[data-feature="quote"]')
-const motivationBckBtn = document.querySelector( "#quoteFeature .back-btn")
-
-motivationCard.addEventListener("click",()=>{
-    dashboard.classList.add("hidden");
-    featureView.classList.add("open");
-    motivationFeature.classList.add("active");
-});
-
-motivationBckBtn.addEventListener("click",()=>{
-    dashboard.classList.remove("hidden");
-    featureView.classList.remove("open");
-    motivationFeature.classList.remove("active");
-});
-
-const getQuote = async () => {
-
-    try {
-
-        quoteLoading.classList.remove("hidden");
-        quoteError.classList.add("hidden");
-
-        const response =
-            await fetch("https://dummyjson.com/quotes/random");
-
-        if (!response.ok) {
-            throw new Error("Failed to fetch quote");
+function motivationOperations() {
+    const motivationFeature = document.querySelector("#quoteFeature");
+    const motivationCard = document.querySelector('[data-feature="quote"]')
+    const motivationBckBtn = document.querySelector( "#quoteFeature .back-btn")
+    
+    motivationCard.addEventListener("click",()=>{
+        dashboard.classList.add("hidden");
+        featureView.classList.add("open");
+        motivationFeature.classList.add("active");
+    });
+    
+    motivationBckBtn.addEventListener("click",()=>{
+        dashboard.classList.remove("hidden");
+        featureView.classList.remove("open");
+        motivationFeature.classList.remove("active");
+    });
+    
+    const getQuote = async () => {
+    
+        try {
+    
+            quoteLoading.classList.remove("hidden");
+            quoteError.classList.add("hidden");
+    
+            const response =
+                await fetch("https://dummyjson.com/quotes/random");
+    
+            if (!response.ok) {
+                throw new Error("Failed to fetch quote");
+            }
+    
+            const data = await response.json();
+    
+    
+            // Full quote screen
+            quoteText.textContent = data.quote;
+            quoteAuthor.textContent = `— ${data.author}`;
+    
+            // Dashboard preview
+            dashboardQuoteText.textContent =
+                `“${data.quote}”`;
+    
+            dashboardQuoteAuthor.textContent =
+                `— ${data.author}`;
+    
+        } catch (error) {
+    
+            console.log("Quote error:", error);
+    
+            quoteError.classList.remove("hidden");
+    
+        } finally {
+    
+            quoteLoading.classList.add("hidden");
+    
         }
-
-        const data = await response.json();
-
-
-        // Full quote screen
-        quoteText.textContent = data.quote;
-        quoteAuthor.textContent = `— ${data.author}`;
-
-        // Dashboard preview
-        dashboardQuoteText.textContent =
-            `“${data.quote}”`;
-
-        dashboardQuoteAuthor.textContent =
-            `— ${data.author}`;
-
-    } catch (error) {
-
-        console.log("Quote error:", error);
-
-        quoteError.classList.remove("hidden");
-
-    } finally {
-
-        quoteLoading.classList.add("hidden");
-
-    }
-};
-
-
-newQuote.addEventListener("click", () => {
+    };
+    
+    
+    newQuote.addEventListener("click", () => {
+        getQuote();
+    });
+    
     getQuote();
-});
+}
 
-getQuote();
+motivationOperations();
+
+//Pomodoro page 
+
+function pomodoroOperations() {
+
+    pomodoroCard.addEventListener("click",()=>{
+        dashboard.classList.add("hidden");
+        featureView.classList.add("open");
+        pomodoroFeature.classList.add("active");
+    });
+    
+    pomodoroBckBtn.addEventListener("click",()=>{
+         dashboard.classList.remove("hidden");
+        featureView.classList.remove("open");
+        pomodoroFeature.classList.remove("active");
+    });
+    
+    let totalSeconds = 25 * 60;
+    let remainingSeconds = totalSeconds;
+    let timer = null;
+    
+    
+    const updateTimerDisplay = ()=>{
+    
+        const minutes = Math.floor(remainingSeconds / 60);
+    
+        const seconds = remainingSeconds % 60 ;
+    
+        timerDisplay.textContent =
+         `${String(minutes).padStart(2, "0")}: ${String(seconds).padStart(2, "0")}`;
+    
+        startTimer.addEventListener("click", () => {
+    
+         if (timer !== null) {
+            return;
+         }
+    
+         timer = setInterval(() => {
+    
+            remainingSeconds--;
+    
+            updateTimerDisplay();
+    
+          }, 1000);
+    
+        });
+    
+    
+        pauseTimer.addEventListener("click", () => {
+    
+        clearInterval(timer);
+    
+        timer = null;
+    
+        });
+    
+    
+        resetTimer.addEventListener("click", () => {
+    
+        clearInterval(timer);
+    
+        timer = null;
+    
+        remainingSeconds = totalSeconds;
+    
+        updateTimerDisplay();
+    
+        });
+    
+    
+    };
+    
+    
+    updateTimerDisplay();
+    
+    
+}
+
+pomodoroOperations();
