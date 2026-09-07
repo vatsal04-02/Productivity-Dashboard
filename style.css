@@ -2898,3 +2898,535 @@ input {
     text-decoration: line-through;
     opacity: 0.5;
 }
+
+/* =========================================================
+   DARK THEME
+   Put this AFTER all your normal/light-theme CSS
+========================================================= */
+
+body.dark {
+    background: #0b0d10;
+    color: #f5f5f7;
+}
+
+
+/* =========================================================
+   MAIN BACKGROUND
+========================================================= */
+
+body.dark .dashboard,
+body.dark .feature-view,
+body.dark .feature-screen {
+    background: #0b0d10;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+body.dark .dashboard-header,
+body.dark .top-bar {
+    color: #f5f5f7;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4 {
+    color: #f5f5f7;
+}
+
+body.dark p {
+    color: #a7adb7;
+}
+
+body.dark .card-label {
+    color: #89919d;
+}
+
+
+/* =========================================================
+   TOP STAT CARDS
+   Tasks / Goals / Focus
+========================================================= */
+
+body.dark .stat-card,
+body.dark .summary-card,
+body.dark .dashboard-stat,
+body.dark .overview-card {
+    background: #15191e;
+    border: 1px solid #292f36;
+    color: #f5f5f7;
+}
+
+
+/* If your top cards use these classes */
+
+body.dark .stat-card span,
+body.dark .summary-card span,
+body.dark .dashboard-stat span {
+    color: #8f98a4;
+}
+
+body.dark .stat-card strong,
+body.dark .summary-card strong,
+body.dark .dashboard-stat strong {
+    color: #f5f5f7;
+}
+
+
+/* =========================================================
+   FEATURE CARDS
+   Todo / Planner / Pomodoro / Goals / Quote / Weather
+========================================================= */
+
+body.dark .feature-card {
+    background: #15191e;
+    border: 1px solid #292f36;
+    color: #f5f5f7;
+    box-shadow: none;
+}
+
+
+/* Hover */
+
+body.dark .feature-card:hover {
+    background: #181d22;
+    border-color: #363d46;
+}
+
+
+/* Card descriptions */
+
+body.dark .feature-card p {
+    color: #a7adb7;
+}
+
+
+/* =========================================================
+   ARROW BUTTONS
+========================================================= */
+
+body.dark .card-arrow {
+    background: #f4f5f7;
+    color: #656d78;
+    border: none;
+}
+
+body.dark .card-arrow:hover {
+    background: #ffffff;
+    color: #20242a;
+}
+
+
+/* =========================================================
+   FEATURE ICONS
+   Keep the colored pastel icons
+========================================================= */
+
+body.dark .feature-icon {
+    /* intentionally don't override the existing colors */
+}
+
+
+/* =========================================================
+   TODO PREVIEW
+========================================================= */
+
+body.dark .quote-preview p {
+    color: #e8ebef;
+}
+
+body.dark .quote-preview span {
+    color: #d6a62e;
+}
+
+
+/* =========================================================
+   WEATHER CARD
+========================================================= */
+
+body.dark .weather-dashboard-card {
+    background: #15191e;
+    border: 1px solid #292f36;
+    color: #f5f5f7;
+}
+
+body.dark .weather-dashboard-card h3 {
+    color: #f5f5f7;
+}
+
+body.dark .weather-temperature strong {
+    color: #f5f5f7;
+}
+
+body.dark .weather-temperature span {
+    color: #a7adb7;
+}
+
+body.dark .weather-details span {
+    color: #858e99;
+}
+
+body.dark .weather-details strong {
+    color: #e9edf1;
+}
+
+
+/* =========================================================
+   WEATHER ICON
+========================================================= */
+
+body.dark .weather-icon {
+    background: #f5f6f8;
+    color: #252a30;
+}
+
+
+/* =========================================================
+   FEATURE SCREEN HEADER
+========================================================= */
+
+body.dark .feature-screen-header {
+    border-color: #292f36;
+}
+
+body.dark .feature-title h2 {
+    color: #f5f5f7;
+}
+
+body.dark .back-btn {
+    background: transparent;
+    color: #aeb5bf;
+    border: none;
+}
+
+body.dark .back-btn:hover {
+    background: #171c21;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+body.dark input,
+body.dark textarea,
+body.dark select {
+    background: #12161a;
+    color: #f2f4f6;
+    border: 1px solid #30363e;
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+    color: #68717c;
+}
+
+body.dark input:focus,
+body.dark textarea:focus,
+body.dark select:focus {
+    background: #151a1f;
+    border-color: #555e69;
+    outline: none;
+}
+
+
+/* =========================================================
+   TODO / GOAL ITEMS
+========================================================= */
+
+body.dark .task-item,
+body.dark .goal-item {
+    background: #15191e;
+    border: 1px solid #292f36;
+    color: #f5f5f7;
+}
+
+body.dark .task-text,
+body.dark .goal-text {
+    color: #e8ebef;
+}
+
+
+/* Completed */
+
+body.dark .task-item.completed,
+body.dark .goal-item.completed {
+    background: #111518;
+}
+
+body.dark .task-item.completed .task-text,
+body.dark .goal-item.completed .goal-text {
+    color: #69737e;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+body.dark .complete-btn,
+body.dark .edit-btn,
+body.dark .delete-btn,
+body.dark .schedule-btn {
+    background: #1c2127;
+    border: 1px solid #30363e;
+    color: #aeb6c0;
+}
+
+body.dark .complete-btn:hover,
+body.dark .edit-btn:hover,
+body.dark .delete-btn:hover,
+body.dark .schedule-btn:hover {
+    background: #252b32;
+    color: #ffffff;
+}
+
+
+/* Completed check */
+
+body.dark .complete-btn.completed-btn {
+    background: #235c3b;
+    color: #8de2aa;
+    border-color: #34734d;
+}
+
+
+/* =========================================================
+   GOALS PROGRESS CARD
+========================================================= */
+
+body.dark .goal-progress-card {
+    background: #15191e;
+    border: 1px solid #292f36;
+    color: #f5f5f7;
+}
+
+body.dark .progress-header span {
+    color: #9da5af;
+}
+
+body.dark .progress-header strong {
+    color: #4fd18b;
+}
+
+
+/* Progress track */
+
+body.dark .progress-bar,
+body.dark .progress-bar.large {
+    background: #282e35;
+}
+
+
+/* =========================================================
+   TASK OVERVIEW
+========================================================= */
+
+body.dark .feature-side-panel {
+    color: #f5f5f7;
+}
+
+body.dark .overview-stat {
+    background: #15191e;
+    border-color: #292f36;
+}
+
+body.dark .overview-stat span {
+    color: #8f98a4;
+}
+
+body.dark .overview-stat strong {
+    color: #f1f3f5;
+}
+
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+body.dark .quote-large-card {
+    background: #15191e;
+    border: 1px solid #292f36;
+}
+
+body.dark .quote-large-text {
+    color: #f1f3f5;
+}
+
+body.dark .quote-author {
+    color: #9ba4ae;
+}
+
+body.dark .quote-mark {
+    color: #6457e8;
+}
+
+
+/* =========================================================
+   POMODORO
+========================================================= */
+
+body.dark .pomodoro-card {
+    background: #15191e;
+    border: 1px solid #292f36;
+}
+
+body.dark .timer-display {
+    color: #f5f5f7;
+}
+
+body.dark .session-label {
+    color: #ff974d;
+}
+
+body.dark .timer-progress {
+    background: #292f36;
+}
+
+body.dark .timer-hint {
+    color: #7f8994;
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+body.dark .secondary-btn {
+    background: #1a1f25;
+    color: #dce1e6;
+    border: 1px solid #30363e;
+}
+
+body.dark .secondary-btn:hover {
+    background: #242a31;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+body.dark .primary-btn {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+body.dark .empty-state h4 {
+    color: #e8ebef;
+}
+
+body.dark .empty-state p {
+    color: #737d88;
+}
+
+body.dark .empty-icon {
+    color: #8b91a0;
+}
+
+
+/* =========================================================
+   ERROR / LOADING
+========================================================= */
+
+body.dark .error-state {
+    background: #351b1d;
+    color: #ff8585;
+}
+
+body.dark .loading-state {
+    color: #9da5af;
+}
+
+
+/* =========================================================
+   DIVIDERS
+========================================================= */
+
+body.dark hr {
+    border-color: #292f36;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+body.dark::-webkit-scrollbar,
+body.dark *::-webkit-scrollbar {
+    width: 8px;
+}
+
+body.dark::-webkit-scrollbar-track,
+body.dark *::-webkit-scrollbar-track {
+    background: #0b0d10;
+}
+
+body.dark::-webkit-scrollbar-thumb,
+body.dark *::-webkit-scrollbar-thumb {
+    background: #30363b;
+    border-radius: 10px;
+}
+
+body.dark::-webkit-scrollbar-thumb:hover,
+body.dark *::-webkit-scrollbar-thumb:hover {
+    background: #454d56;
+}
+
+/* =========================
+   DARK THEME - FEATURE UI
+========================= */
+
+body.dark-theme .feature-screen {
+    background: #0b0d0f;
+    color: #f5f5f7;
+}
+
+body.dark-theme .feature-screen-header {
+    border-bottom-color: #272b31;
+}
+
+/* Task overview outer card */
+body.dark-theme .feature-side-panel {
+    background: #15181c;
+    border: 1px solid #292e35;
+    color: #f5f5f7;
+    box-shadow: none;
+}
+
+/* Overview heading */
+body.dark-theme .side-panel-header h3 {
+    color: #f5f5f7;
+}
+
+body.dark-theme .side-panel-header .card-label {
+    color: #9299a5;
+}
+
+/* Individual statistics */
+body.dark-theme .overview-stat {
+    background: #15181c;
+    border-bottom: 1px solid #292e35;
+    color: #aeb5c0;
+}
+
+body.dark-theme .overview-stat:last-child {
+    border-bottom: none;
+}
+
+body.dark-theme .overview-stat span {
+    color: #9ba3af;
+}
+
+body.dark-theme .overview-stat strong {
+    color: #f5f5f7;
+}
