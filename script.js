@@ -61,6 +61,8 @@ const timerProgress = document.querySelector("#timerProgress");
 
 const taskArr =[];
 
+const goalArr =[];
+
 //todo operations
 function todoOperations(){
 
@@ -548,7 +550,10 @@ pomodoroOperations();
 
 const goalsFeature = document.querySelector("#goalsFeature");
 const goalsCard = document.querySelector('[data-feature="goals"]');
-const goalsBckBtn = document.querySelector("#goalsFeature .back-btn")
+const goalsBckBtn = document.querySelector("#goalsFeature .back-btn");
+const goalsProgressText = document.querySelector("#goalsProgressText");
+const goalsPercentage = document.querySelector("#goalsPercentage");
+const goalsBar = document.querySelector("#goalsBar");
 
 
 goalsCard.addEventListener("click",()=>{
@@ -564,7 +569,152 @@ goalsBckBtn.addEventListener("click",()=>{
 });
 
 const goalInput = document.querySelector("#goalInput");
-const addGoal = document.querySelector("#addGoal")
+const addGoal = document.querySelector("#addGoal");
+const goalList = document.querySelector("#goalList");
 
 
 
+
+const goalUI = () => {
+
+    goalList.innerHTML = "";
+
+    goalArr.forEach((goal, index) => {
+
+       goalList.innerHTML += `
+            <div class="goal-item ${goal.completed ? "completed" : ""}" data-index="${index}">
+                <span class="goal-text">${goal.text}</span>
+
+                <div class="goal-actions">
+                    <button class="goalcomplete-btn ${goal.completed ? "completed-btn" : ""}">
+                        <i class="ri-check-line"></i>
+                    </button>
+
+                    <button class="goaledit-btn">
+                        <i class="ri-pencil-ai-line"></i>
+                    </button>
+
+                    <button class="goaldelete-btn">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+
+    });
+
+    function buttons() {
+
+        const goaldeleteBtns = document.querySelectorAll(".goaldelete-btn");
+
+        goaldeleteBtns.forEach((btn) => {
+
+            btn.addEventListener("click", () => {
+
+                const index =
+                    btn.parentElement.parentElement.dataset.index;
+
+                goalArr.splice(index, 1);
+
+                goalUI();
+            });
+
+        });
+
+
+        const goaleditBtns = document.querySelectorAll(".goaledit-btn");
+
+        goaleditBtns.forEach((btn) => {
+
+            btn.addEventListener("click", () => {
+
+                const index =
+                    btn.parentElement.parentElement.dataset.index;
+
+                const newGoal =
+                    prompt("Edit your Goal:", goalArr[index].text);
+
+                if (newGoal !== null && newGoal.trim() !== "") {
+
+                    goalArr[index].text = newGoal.trim();
+
+                    goalUI();
+                    
+                }
+
+            });
+
+        });
+
+        const goalcompleteBtns = document.querySelectorAll(".goalcomplete-btn");
+
+        goalcompleteBtns.forEach((btn) => {
+
+            btn.addEventListener("click", () => {
+
+             const index =
+             btn.parentElement.parentElement.dataset.index;
+
+             goalArr[index].completed = !goalArr[index].completed;
+         
+ 
+             goalUI();
+             
+
+            });
+
+        });
+
+
+        
+
+        
+
+    }
+    
+    buttons();
+    updateGoalProgress();
+}
+
+const updateGoalProgress = ()=>{
+    const totalGoals = goalArr.length;
+
+    const completedGoals = goalArr.filter(goal => goal.completed).length;
+
+    let percentage =0;
+
+    if(totalGoals>0){
+        percentage = Math.round((completedGoals/totalGoals)*100);
+    }
+
+    goalsProgressText.textContent= `${completedGoals} of ${totalGoals} completed`;
+    goalsPercentage.textContent =`${percentage}%`;
+
+    goalsBar.style.width =`${percentage}%`;
+    
+}
+
+addGoal.addEventListener("click",(event)=>{
+
+        event.preventDefault();
+
+        const goal = goalInput.value;
+
+        if(goal.trim() !== ""){
+
+            goalArr.push({
+                text: goal,
+                completed: false,
+            });
+
+
+            console.log(goalArr);
+
+            goalInput.value = "";
+
+            goalUI();
+
+            
+        }
+
+ });
