@@ -543,3 +543,28 @@ function pomodoroOperations() {
 }
 
 pomodoroOperations();
+
+//Daily goals operation 
+
+const goalsFeature = document.querySelector("#goalsFeature");
+const goalsCard = document.querySelector('[data-feature="goals"]');
+const goalsBckBtn = document.querySelector("#goalsFeature .back-btn")
+
+
+goalsCard.addEventListener("click",()=>{
+    dashboard.classList.add("hidden");
+    featureView.classList.add("open");
+    goalsFeature.classList.add("active");
+});
+
+goalsBckBtn.addEventListener("click",()=>{
+    dashboard.classList.remove("hidden");
+    featureView.classList.remove("open");
+    goalsFeature.classList.remove("active");
+});
+
+const goalInput = document.querySelector("#goalInput");
+const addGoal = document.querySelector("#addGoal")
+
+
+
